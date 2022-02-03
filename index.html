@@ -1,0 +1,168 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Vue</title>
+  <script src="https://unpkg.com/vue@3.0.2"></script>
+  <style>
+    html, body{
+      overflow: hidden;
+    }
+    body{
+      font-family: arial;
+      background: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+    a, p {
+      margin:0;
+      padding:0
+    }
+    .wrapper{
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .wrapper > div {
+      flex: 1 1;
+    }
+    .wrapper_tbx {
+      padding: 20px;
+    }
+    .box{
+      border: #ddd;
+      display: inline-block;
+      height: 100%;
+      width: 100%
+    }
+    .vertical.panel1{
+      width: 80vw;
+    }
+    .vertical.panel2{
+      width: 20vw;
+    }
+    .horizontal.panel1{
+      height: 66vh;
+    }
+    .horizontal.panel2{
+      height: 34vw;
+    }
+    .main_textbox{
+      width: 100%;
+      height: 100%;
+      resize: none;
+      font-family: Arial, Helvetica, sans-serif;
+      border: #727272;
+    }
+    .p_choices{  
+      line-height: 1.75em;
+    }
+    .highlighted{
+      background-color: #c4c4c4
+    }
+    .highlighted.choice{
+      background-color: #9dcbff
+    }
+
+    .chapTitle{
+      font-style: bold;
+      font-size: 3em;
+    }
+    .chapSubtitle{
+      font-style: bold;
+      font-size: 2em;
+    }
+    .chapNum{
+      font-style: bold;
+      font-size: 3.5em;
+    }
+    .secTitle{
+      font-style: bold;
+      font-size: 1.25em;
+    }
+    .secParallel{
+      font-style: italic;
+      font-size: 1em;
+    }
+    .curly, .vNum{
+      font-weight: bold;
+    }
+
+    .fNum{
+      font-weight: bold;
+      vertical-align: super;
+      font-size: .65em;
+      color: #e237b7;
+    }
+    .super{
+      font-style: italic;
+      vertical-align: super;
+      font-size: .65em;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="app">
+    <div class="wrapper">
+      <!-- attribute binding ":" means the same thing as "v-bind:" -->
+      <!-- <a :href="url">best website ever</a> -->
+
+      <div class="vertical panel1">
+        <div class="box, choices_win horizontal panel1">
+          <div class="main_textbox">
+            <div class="wrapper_tbx">
+            <p class="p_choices">
+              <span v-for="item in items" 
+              :class="[
+                {highlighted: item.isHighlighted},
+                {choice: item.choice},
+                {vNum: item.type==='vNum'},
+                {fNum: item.type==='fNum'},
+                {curly: item.type==='curlOpen'||item.type==='curlClos'},
+                {super: item.type==='DI'},
+              ]"
+              @click="toggleChoice(item)">
+                {{ item.content }}
+              </span>
+            </p>
+            </div>
+          </div>
+        </div>
+
+        <span class="resizer horizontal"></span>
+
+        <div class="box, footnote_win horizontal panel2">
+          <div class="main_textbox">
+            <div class="wrapper_tbx">
+            Footnote Window
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <span class="resizer vertical"></span>
+
+      <div class="vertical panel2">
+        <div class="box, extract_win">
+          <!-- <div class="main_textbox"> -->
+            <div class="wrapper_tbx">
+            <p class="p_extract">
+              <span v-for="item in highlightedItems" >
+                {{ item.content }}
+              </span>
+            </p>
+            </div>
+          <!-- </div> -->
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
