@@ -5,7 +5,7 @@ const app = Vue.createApp({
     return{
       items: [
         {choice: false, lvl: 1, type: 'vNum', id:1, isHighlighted: true, content: '1 '},
-        {choice: false, lvl: 1, type: 'DI', id:2, isHighlighted: true, content: 'DI'},
+        {choice: false, lvl: 1, type: 'DI', id:2, isHighlighted: true, content: 'DI '},
         {choice: false, lvl: 1, type: 'fNum', id:3, isHighlighted: true, content: '06'},
         {choice: false, lvl: 2, type: 'curlOpen', id:4, isHighlighted: false, content: '{'},
         {choice: true, lvl: 3, type: 'pareOpen', id:5, isHighlighted: false, content: '('},

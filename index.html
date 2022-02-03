@@ -36,6 +36,9 @@
       height: 100%;
       width: 100%
     }
+    .hidden{
+      display: none;
+    }
     .vertical.panel1{
       width: 80vw;
     }
@@ -150,7 +153,15 @@
           <!-- <div class="main_textbox"> -->
             <div class="wrapper_tbx">
             <p class="p_extract">
-              <span v-for="item in highlightedItems" >
+              <span v-for="item in highlightedItems" :class="[
+              {hidden: item.type === 'vNum' 
+                    || item.type === 'fNum' 
+                    || item.type === 'DI'
+                    || item.type === 'CI'
+                    || item.type === 'squaOpen'
+                    || item.type === 'squaClos'
+                  }
+              ]" >
                 {{ item.content }}
               </span>
             </p>
